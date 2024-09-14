@@ -1,0 +1,20 @@
+{
+  "name": "Your App Name",
+  "description": "A brief description of your app",
+  "repository": "https://github.com/melodic456/binance_api_mongo",
+  "keywords": ["node", "heroku"],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
