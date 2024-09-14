@@ -1,7 +1,7 @@
 const api = require('@marcius-capital/binance-api')
 
 async function save_by_pair(item) {
-   await fetch('http://20.83.146.14/api/save', {
+   await fetch('http://localhost:3000/api/save', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -16,7 +16,8 @@ async function save_by_pair(item) {
                             }
                         });
 }
-const symbols = ['btcusdt', 'ethusdt', 'ltcusdt', 'xrpusdt', 'bchusdt', 'dogeusdt', 'bnbusdt', 'usdt'];
+// const symbols = ['btcusdt', 'ethusdt', 'ltcusdt', 'xrpusdt', 'bchusdt', 'dogeusdt', 'bnbusdt', 'trxusdt', 'polusdt'];
+const symbols = ['btcusdt', 'ethusdt', 'ltcusdt', 'xrpusdt', 'bchusdt', 'dogeusdt', 'bnbusdt', 'trxusdt', 'polusdt', 'tonusdt', 'wavesusdt'];
 
 symbols.forEach((symbol) => {
   api.stream.aggTrade(symbol, (cb) => save_by_pair(cb));
@@ -29,7 +30,8 @@ setTimeout(() => {
 
 
 async function updateData(item) {
-    await fetch('http://20.83.146.14/api/update', {
+    console.log(item.symbol, item.price)
+    await fetch('http://localhost:3000/api/update', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +54,9 @@ setInterval(() => {
     api.stream.aggTrade('bchusdt', cb => updateData(cb))
     api.stream.aggTrade('dogeusdt', cb => updateData(cb))
     api.stream.aggTrade('bnbusdt', cb => updateData(cb))
-    api.stream.aggTrade('usdt', cb => updateData(cb))
+    // api.stream.aggTrade('usdt', cb => updateData(cb))
+    api.stream.aggTrade('trxusdt', cb => updateData(cb))
+    api.stream.aggTrade('polusdt', cb => updateData(cb))
 
 setTimeout(() => {
     api.stream.close.all()
