@@ -1,7 +1,7 @@
 const api = require('@marcius-capital/binance-api')
 
 async function save_by_pair(item) {
-   await fetch('http://localhost:3000/api/save', {
+   await fetch('http://195.7.6.213:3000/api/save', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ setTimeout(() => {
 
 async function updateData(item) {
     console.log(item.symbol, item.price)
-    await fetch('http://localhost:3000/api/update', {
+    await fetch('http://195.7.6.213:3000/api/update', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
